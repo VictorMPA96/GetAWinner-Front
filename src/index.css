@@ -26,8 +26,22 @@ hr{
   display: flex;
   width: 100%;
   justify-content: center;
-  background-color: #064663 ;
-  
+  background-color: #064663;  
+}
+
+#logoBannerContainer{
+  padding: 0.3em;
+  height: 50px;
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  color: #ECB365;
+  font-weight: bold;
+}
+
+#logoBannerContainer *{
+  height: 80%;
 }
 
 #loginContent, #registerContent, #winnerContent{

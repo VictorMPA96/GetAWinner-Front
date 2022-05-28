@@ -4,6 +4,7 @@ import store from "../../app/store";
 import { thunkLoginUser } from "../../app/thunk";
 import CButton from "../formElements/button";
 import InputText from "../formElements/inputText";
+import LogoBanner from "../logoBanner";
 
 
 interface ILoginProps {}
@@ -46,30 +47,35 @@ const Login: FC<ILoginProps> = () => {
 
     return (
         <React.Fragment>
-            <section id="loginContent">
-                <InputText 
-                    label={"Username"} 
-                    idInput={"inputtextusernamelogin"} 
-                    type={"text"} 
-                    placeholder={"insert your username"} 
-                    value={valueLoginUsername} 
-                    onChange={(text: string) => {setLoginStates({valueLoginUsername: text, valueLoginPassword})}}
-                    variant="outline-primary"
-                />
-                <InputText 
-                    label={"Password"} 
-                    idInput={"inputtextpasswordlogin"} 
-                    type={"password"} 
-                    placeholder={"insert your password"}
-                    value={valueLoginPassword} 
-                    onChange={(text: string) => {setLoginStates({valueLoginUsername, valueLoginPassword: text})}}
-                    variant="outline-primary"
-                />
-                {showError === true ? <section className="errorMsgContainer"><div>{errorMsg}</div></section> : null}
-                <CButton BVariant="success" text="Login" onClick={login} />
-                <hr />
-                <Link to="/register">Create a new account</Link>
+            <section id="loginBody">
+                <LogoBanner />
+                <div id="loginContent">            
+                    <InputText 
+                        label={"Username"} 
+                        idInput={"inputtextusernamelogin"} 
+                        type={"text"} 
+                        placeholder={"insert your username"} 
+                        value={valueLoginUsername} 
+                        onChange={(text: string) => {setLoginStates({valueLoginUsername: text, valueLoginPassword})}}
+                        variant="outline-primary"
+                    />
+                    <InputText 
+                        label={"Password"} 
+                        idInput={"inputtextpasswordlogin"} 
+                        type={"password"} 
+                        placeholder={"insert your password"}
+                        value={valueLoginPassword} 
+                        onChange={(text: string) => {setLoginStates({valueLoginUsername, valueLoginPassword: text})}}
+                        variant="outline-primary"
+                    />
+                    {showError === true ? <section className="errorMsgContainer"><div>{errorMsg}</div></section> : null}
+                    <CButton BVariant="success" text="Login" onClick={login} />
+                    <hr />
+                    <Link to="/register">Create a new account</Link>
+                </div>
             </section>
+           
+            
         </React.Fragment>
     )
     

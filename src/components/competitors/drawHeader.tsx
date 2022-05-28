@@ -12,6 +12,7 @@ const DrawHeader: FC<IDrawHeader> = () => {
     const Competitors = store.getState().competitors;    
     const [numOfWinners, setNumOfWinners] = useState(1);
     const [typeDraw, setTypeDraw] = useState("classic");
+    const [errorMsg, setErrorMsg] = useState("");;
     const [showError, setShowError] = useState(false);
     const [nowDisable, setNowDisable] = useState(false);
 
@@ -48,10 +49,11 @@ const DrawHeader: FC<IDrawHeader> = () => {
             navigate("/winner");       
 
         }else if(typeDraw === "classic" && Competitors.length <= numOfWinners){
+            setErrorMsg("The number of winners must be less than number of competitors.");
             setShowError(true);
         }
 
-        if(typeDraw === "best-of-three"){
+        if(typeDraw === "best-of-three" && Competitors.length >= 3){
 
             let overtakings:string[] = [];
             let candidates:string[] = [];
@@ -81,7 +83,12 @@ const DrawHeader: FC<IDrawHeader> = () => {
                 }
             }
 
+            setShowError(false);
             navigate("/winner");
+
+        }else{
+            setErrorMsg("This type of draw requires at least three competitors.");
+            setShowError(true);
         }
         
 
@@ -109,7 +116,7 @@ const DrawHeader: FC<IDrawHeader> = () => {
                 <div className={styles.getawinner} onClick={getWinner}>GET WINNER</div>
             </section>
             {showError === true 
-                ? <div className="errorMsgContainer">The number of winners must be less than number of competitors.</div>
+                ? <div className="errorMsgContainer">{errorMsg}</div>
                 : null
             }
         </React.Fragment>

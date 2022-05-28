@@ -1,18 +1,12 @@
 import React, { FC } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import arrow from "./arrow.png";
+import { Link } from "react-router-dom";
+import arrow from "../../img/arrow.png";
 
 interface IWinnerProps {}
 
-const Winner: FC<IWinnerProps> = () => {
-
-    const navigate = useNavigate();
+const Winner: FC<IWinnerProps> = () => {   
 
     let getWinner: any = JSON.parse(localStorage.getItem("winners") as string);
-    
-    if(getWinner === null){
-        navigate("/competitors")
-    }
 
     const winners = getWinner.winners;
     let overtakings = getWinner.overtakings;
@@ -51,8 +45,7 @@ const Winner: FC<IWinnerProps> = () => {
                     :
                     null
                 }
-            </section>
-            
+            </section>            
         </React.Fragment>
     )
 }

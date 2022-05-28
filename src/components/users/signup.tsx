@@ -1,4 +1,3 @@
-import { async } from "q";
 import React, { FC, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
@@ -6,6 +5,7 @@ import store from "../../app/store";
 import { thunkRegisterUser } from "../../app/thunk";
 import CButton from "../formElements/button";
 import InputText from "../formElements/inputText";
+import LogoBanner from "../logoBanner";
 import { IUser } from "../main";
 
 
@@ -67,7 +67,7 @@ const Signup: FC<ISignupProps> = () => {
                 username: valueUsername,
                 password: valuePassword
             }
-            //setShowError(false);
+            
             const registerUser: any = await store.dispatch(thunkRegisterUser(User));
             
             if(registerUser === "USERNAME ALREADY EXISTS"){
@@ -77,8 +77,7 @@ const Signup: FC<ISignupProps> = () => {
                 setUsernameRepeatedMsg("");
                 setShowError(false);
                 navigate("/login");
-            }
-            
+            }            
 
         }else{
             setShowError(true);
@@ -89,43 +88,43 @@ const Signup: FC<ISignupProps> = () => {
 
     return (
         <React.Fragment>
-            <section id="registerContent">
-                <InputText 
-                    label={"Username"} 
-                    idInput={"inputtextusername"} 
-                    type={"text"} 
-                    placeholder={"min. 5 characters"} 
-                    value={valueUsername} 
-                    onChange={(text: string) => {setRegisterStates({valueUsername: text.trim(), valuePassword, valueRepeatPassword})}}
-                    variant={"outline-primary"}
-                />
-                <InputText 
-                    label={"Password"} 
-                    idInput={"inputtextpassword"} 
-                    type={"password"} 
-                    placeholder={"min. 8 characters w/ mayus, minus and digits"} 
-                    value={valuePassword} 
-                    onChange={(text: string) => {setRegisterStates({valueUsername, valuePassword: text.trim(), valueRepeatPassword})}}
-                    variant={"outline-primary"}
-
-
-                />
-                <InputText 
-                    label={"Confirm Password"} 
-                    idInput={"inputtextrepeatpassword"} 
-                    type={"password"} 
-                    placeholder={"insert the password again"} 
-                    value={valueRepeatPassword} 
-                    onChange={(text: string) => {setRegisterStates({valueUsername, valuePassword, valueRepeatPassword: text.trim()})}}
-                    variant={"outline-primary"}
-
-
-                />
-                {showErrors === true ? <section className="errorMsgContainer" ><div>{usernameMsg}</div><div>{passwordMsg}</div><div>{repeatPasswordMsg}</div><div>{usernameRepeatedMsg}</div></section> : null}
-                <CButton BVariant="success" text="REGISTER USER" onClick={senduser} />            
-                <hr />
-                <Link to="/login">Login Page</Link>
+            <section id="registerBody">
+                <LogoBanner />
+                <div id="registerContent">
+                    <InputText 
+                        label={"Username"} 
+                        idInput={"inputtextusername"} 
+                        type={"text"} 
+                        placeholder={"min. 5 characters"} 
+                        value={valueUsername} 
+                        onChange={(text: string) => {setRegisterStates({valueUsername: text.trim(), valuePassword, valueRepeatPassword})}}
+                        variant={"outline-primary"}
+                    />
+                    <InputText 
+                        label={"Password"} 
+                        idInput={"inputtextpassword"} 
+                        type={"password"} 
+                        placeholder={"min. 8 characters w/ mayus, minus and digits"} 
+                        value={valuePassword} 
+                        onChange={(text: string) => {setRegisterStates({valueUsername, valuePassword: text.trim(), valueRepeatPassword})}}
+                        variant={"outline-primary"}
+                    />
+                    <InputText 
+                        label={"Confirm Password"} 
+                        idInput={"inputtextrepeatpassword"} 
+                        type={"password"} 
+                        placeholder={"insert the password again"} 
+                        value={valueRepeatPassword} 
+                        onChange={(text: string) => {setRegisterStates({valueUsername, valuePassword, valueRepeatPassword: text.trim()})}}
+                        variant={"outline-primary"}
+                    />
+                    {showErrors === true ? <section className="errorMsgContainer" ><div>{usernameMsg}</div><div>{passwordMsg}</div><div>{repeatPasswordMsg}</div><div>{usernameRepeatedMsg}</div></section> : null}
+                    <CButton BVariant="success" text="REGISTER USER" onClick={senduser} />            
+                    <hr />
+                    <Link to="/login">Login Page</Link>
+                </div>
             </section>
+            
         </React.Fragment>
     )
     
