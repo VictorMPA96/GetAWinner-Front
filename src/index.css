@@ -44,16 +44,19 @@ hr{
   height: 80%;
 }
 
+#loginBody, #registerBody{
+  width: 45%;
+  min-width: 490px;
+}
+
 #loginContent, #registerContent, #winnerContent{
   display: flex;
   flex-direction: column;
-  width: 50%;
-  min-width: 440px;
   margin-top: 1em;
   background-color: #041C32;
   border: 2px solid #ECB365;
   border-radius: 15px;
-  padding: 2em;
+  padding: 1em;
   height: fit-content;
   color: wheat;
 

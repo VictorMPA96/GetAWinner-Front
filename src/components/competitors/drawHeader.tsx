@@ -12,7 +12,7 @@ const DrawHeader: FC<IDrawHeader> = () => {
     const Competitors = store.getState().competitors;    
     const [numOfWinners, setNumOfWinners] = useState(1);
     const [typeDraw, setTypeDraw] = useState("classic");
-    const [errorMsg, setErrorMsg] = useState("");;
+    const [errorMsg, setErrorMsg] = useState("");
     const [showError, setShowError] = useState(false);
     const [nowDisable, setNowDisable] = useState(false);
 
@@ -86,7 +86,7 @@ const DrawHeader: FC<IDrawHeader> = () => {
             setShowError(false);
             navigate("/winner");
 
-        }else{
+        }else if(typeDraw === "best-of-three"){
             setErrorMsg("This type of draw requires at least three competitors.");
             setShowError(true);
         }
