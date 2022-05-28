@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from './components/users/login';
 import Signup from './components/users/signup';
+import Winner from './components/competitors/winner';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/competitors" element={<CompetitorsPage />} />
+          <Route path="/winner" element={<WinnerPage />} />
         </Routes>
       </div>
     </Router>
@@ -46,6 +48,14 @@ function CompetitorsPage(){
   return (
     <React.Fragment>
        <Main />
+    </React.Fragment>
+  )
+}
+
+function WinnerPage(){
+  return (
+    <React.Fragment>
+       <Winner />
     </React.Fragment>
   )
 }

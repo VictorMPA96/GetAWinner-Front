@@ -1,4 +1,3 @@
-import { set } from "immer/dist/internal";
 import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import store from "../../app/store";
@@ -61,7 +60,7 @@ const CreateCompetitor: FC<ICreateCompetitorProps> = () => {
                     onChange={(text: string) => setName(text)}
                     variant="warning"
                 />
-                <CButton className={styles.deleteCompetitorBtn} BVariant={"success"} text={"+"} onClick={sendCompetitor} />               
+                <CButton className={styles.createCompetitorBtn} BVariant={"success"} text={"+"} onClick={sendCompetitor} />               
             </div>
             {showErrorMsg === true ? <div className="errorMsgContainer">{errorMsg}</div> : null}         
         </React.Fragment>

@@ -1,3 +1,10 @@
+.headerContainer{
+    border: 2px solid #ECB365;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #041C32;
+}
+
 header{
     display: flex;
     flex-direction: column;
@@ -5,7 +12,7 @@ header{
     justify-content: center;
     background-color: #041C32;
     padding-top: 1em;
-    border: 2px solid #ECB365;
+    border-bottom: 2px solid #ECB365;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     color: #ECB365;
@@ -18,8 +25,8 @@ header > div {
 
 header > section {
     position: absolute;
-    right: 5px;
-    
+    right: 10px;
+    margin-bottom: 1em;
 }
 
 
@@ -40,7 +47,7 @@ header > section {
     header section {
         position: inherit;
         align-self: flex-end;
-        margin-bottom: 1em;
+        margin-bottom: 1em;        
     }
-  }
+}
 

@@ -18,7 +18,7 @@ const InputText: FC<IInputTextProps> = ({ label, idInput, type, placeholder, val
     return (
         <React.Fragment>
             <InputGroup className="mb-3">
-                <Button tabIndex={-1} variant={variant} id={"idbtn"+label}>
+                <Button className={className} tabIndex={-1} variant={variant} id={"idbtn"+label}>
                     <label htmlFor={idInput}>{label}</label>
                 </Button>
                 <FormControl    

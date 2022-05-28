@@ -30,7 +30,7 @@ hr{
   
 }
 
-#loginContent, #registerContent{
+#loginContent, #registerContent, #winnerContent{
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -41,6 +41,7 @@ hr{
   border-radius: 15px;
   padding: 2em;
   height: fit-content;
+  color: wheat;
 
 } 
 
@@ -58,14 +59,20 @@ hr{
   margin: 0.5em;
   border: 2px solid #ECB365;
   border-radius: 15px;
-  height: 500px;
-  overflow-y: scroll;
-  scrollbar-color: transparent transparent;
+  height: 500px;  
   background-color: #04293A;
   width: 50%;
   min-width: 440px;
   padding: 0.5em;
   gap: 0.5rem;
+  overflow-y: scroll;  
+  scrollbar-width: none;  /* Firefox */
+  scrollbar-color: transparent transparent; /* Linux */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+#listCompetitors::-webkit-scrollbar {
+  display: none;
 }
 
 .competitor{
@@ -75,6 +82,69 @@ hr{
   background-color: wheat;
   border: 2px solid #04293A;
   border-radius: 20px;
+  color: #041C32;
+  font-weight: 500;
+  font-size: large;
+}
+
+.competitor div{
+  flex-basis: 80%;
+  overflow-x: auto;
+}
+
+.competitor button{
+  border-radius: 15px;
+  border: 2px solid darkred;
+  background-color: firebrick;
+  color: tomato;
+}
+
+#numWinnersContainer{
+  height: 25px;
+  display: flex;
+  align-content: center;
+}
+
+#labelNumWinners, #labelTypeDraw{
+  height: 25px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: gray;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: black;
+  font-weight: 500;
+}
+
+#inputNumWinners, #selectTypeDraw{
+  
+  width: 115px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#dataWinnerContainer{
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  align-items: center;
+  padding: 1em;
+  margin: 1em;
+  background-color: rgba(245, 222, 179, 0.637);
+  border-radius: 20px;
+  border: 2px solid whitesmoke;
+  color: black;
+}
+
+#dataWinnerContainer img{
+  width: 200px;
+}
+
+#backtohome{
+  color:#0094d8;
+  text-decoration: none;
+  font-size: 1.5em;
+  margin-bottom: 1rem;
 }
 
 code {
@@ -87,10 +157,11 @@ button, button label{
 }
 
 .errorMsgContainer{
-  border: 1px solid red;
+  border: 1px solid tomato;
   border-radius: 10px;
   padding: 0.5em;
   margin-bottom: 0.5rem;
-  color: red;
+  color: tomato;
+  margin: 0.5em;
 }
 

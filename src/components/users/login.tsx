@@ -37,7 +37,7 @@ const Login: FC<ILoginProps> = () => {
             localStorage.setItem("usernameValue", valueLoginUsername);
         }
 
-        if(loginUser.response !== undefined && loginUser.response.status === 400 || loginUser.response !== undefined && loginUser.response.status === 401){
+        if((loginUser.response !== undefined && loginUser.response.status === 400) || (loginUser.response !== undefined && loginUser.response.status === 401)){
             setErrorMsg("Incorrect username or password. Try it again!");
             setShowError(true);
         }

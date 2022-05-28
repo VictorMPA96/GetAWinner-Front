@@ -5,7 +5,7 @@ import styles from "./userLogged.module.css";
 
 interface IUserLoggedProps {}
 
-const UserLogged: FC<IUserLoggedProps> = ({}) => {
+const UserLogged: FC<IUserLoggedProps> = () => {
     const navigate = useNavigate();
     const currentUsername = localStorage.getItem("usernameValue");
 

@@ -19,9 +19,6 @@ const Competitor: FC<ICompetitorProps> = ({_id, name}) => {
         
         const deleteCompetitor: any = await store.dispatch(thunkDeleteCompetitor(idCompetitor));
 
-        console.log(deleteCompetitor);
-        
-
         if(deleteCompetitor === "TOKEN EXPIRED" || deleteCompetitor === "'X-Session-Token' HEADER IS EMPTY"){
             navigate("/login");
             alert("Your session has expired, please log in again.");

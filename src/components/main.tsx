@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import UserLogged from "./users/userLogged";
 import { useNavigate } from "react-router";
 import styles from "./main.module.css";
+import DrawHeader from "./competitors/drawHeader";
 
 
 export interface IUser {
@@ -30,22 +31,28 @@ const Main = () => {
     const getCompetitors = async () => {
         const getCompetitors: any = await store.dispatch(thunkGetCompetitors);
 
-        if(getCompetitors === "'X-Session-Token' HEADER IS EMPTY"){
+        if((getCompetitors === "'X-Session-Token' HEADER IS EMPTY")||(getCompetitors === "TOKEN EXPIRED")){
+            alert("Your session has expired, please log in again.");
             navigate("/login");
         }        
     }
 
     useEffect(() => {
         getCompetitors();
+        localStorage.removeItem("winners");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <React.Fragment>
             <section id="mainContainer">
-                <header className={styles.header}>
-                    <CreateCompetitor />
-                    <UserLogged />
-                </header>
+                <div className={styles.headerContainer}>
+                    <header className={styles.header}>
+                        <CreateCompetitor />
+                        <UserLogged />
+                    </header>
+                    <DrawHeader /> 
+                </div>                
                 <CompetitorList competitors={competitorsUS} />
             </section>            
         </React.Fragment>
