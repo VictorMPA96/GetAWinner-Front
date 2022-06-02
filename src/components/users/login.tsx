@@ -50,6 +50,7 @@ const Login: FC<ILoginProps> = () => {
 
     return (
         <React.Fragment>
+            <p>holaaaa</p>
             <section id="loginBody">
                 <LogoBanner />
                 <div id="loginContent">            
