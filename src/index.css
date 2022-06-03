@@ -119,6 +119,8 @@ hr{
 .competitor div{
   flex-basis: 80%;
   overflow-x: auto;
+  scrollbar-color: black transparent;
+  scrollbar-width: thin;
 }
 
 .competitor button{
