@@ -64,9 +64,7 @@ export const thunkPostCompetitor = (params: any) => async (dispatch: any, getSta
             }
         };       
 
-        const response = await axios.post('http://localhost:3000/competitors', params, config);      
-        
-        console.log("thunk res post", response);
+        const response = await axios.post('http://localhost:3000/competitors', params, config); 
         
         dispatch({
             type: "competitors/postCompetitor", 
@@ -91,9 +89,7 @@ export const thunkDeleteCompetitor = (params: any) => async (dispatch: any, getS
             }
         };       
 
-        const response = await axios.delete('http://localhost:3000/competitors/'+params, config);      
-        
-        console.log("thunk res delete", response);
+        const response = await axios.delete('http://localhost:3000/competitors/'+params, config); 
         
         dispatch({
             type: "competitors/deleteCompetitor", 

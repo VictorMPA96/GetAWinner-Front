@@ -16,6 +16,31 @@ const DrawHeader: FC<IDrawHeader> = () => {
     const [showError, setShowError] = useState(false);
     const [nowDisable, setNowDisable] = useState(false);
 
+    const blockLetters = (e: any) => {
+        
+        e = e || window.event;        
+        let error = false;
+
+        if(!e.key.match(/^[0-9]+$/)){
+            error = true;
+        }
+        if((e.keyCode === 8) || (e.code === "Backspace")){
+            error = false;
+        }
+        if((e.keyCode === 46) || (e.code === "Delete")){
+            error = false;
+        }
+        if((e.keyCode === 37) || (e.code === "ArrowLeft")){
+            error = false;
+        }
+        if((e.keyCode === 39) || (e.code === "ArrowRight")){
+            error = false;
+        }
+
+        if(error){
+            e.preventDefault();
+        }               
+    }
 
     const typeDrawFN = (e: any) => {        
         
@@ -33,9 +58,18 @@ const DrawHeader: FC<IDrawHeader> = () => {
         if(typeDraw === "classic" && Competitors.length > numOfWinners){
             setShowError(false);
 
+            let currentNumOfWinners: string | Number = numOfWinners.toString();
+
+            if(!currentNumOfWinners.match(/^[0-9]+$/)){                
+                setNumOfWinners(1);
+                currentNumOfWinners = 1;
+            }else{
+                currentNumOfWinners = Number(currentNumOfWinners);
+            } 
+
             let winners:string[] = [];
 
-            for(let i = 0; i < numOfWinners; i++){
+            for(let i = 0; i < currentNumOfWinners; i++){
                 const randomCompetitor = Competitors[Math.floor(Math.random() * Competitors.length)];
                 const match = winners.find(competitor => competitor === randomCompetitor.name);
                 if(match){
@@ -101,8 +135,8 @@ const DrawHeader: FC<IDrawHeader> = () => {
                     <div className={styles.numWinnersContainer} >
                         <label className={styles.labelNumWinners} htmlFor="inputNumWinners">Nº of winners</label>
                         {nowDisable === true 
-                            ? <input disabled min={1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>
-                            : <input min={1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>                     
+                            ? <input disabled min={1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onKeyDown={(e: any) => blockLetters(e)} onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>
+                            : <input min={1} max={Competitors.length-1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onKeyDown={(e: any) => blockLetters(e)} onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>                     
                         }
                     </div>
                     <div className={styles.typeDrawContainer}>
