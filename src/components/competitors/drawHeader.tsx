@@ -98,16 +98,16 @@ const DrawHeader: FC<IDrawHeader> = () => {
         <React.Fragment>
             <section className={styles.drawHeaderContainer}>
                 <div className={styles.drawconfigContainer}>
-                    <div id="numWinnersContainer" >
-                        <label id="labelNumWinners" htmlFor="inputNumWinners">Nº of winners</label>
+                    <div className={styles.numWinnersContainer} >
+                        <label className={styles.labelNumWinners} htmlFor="inputNumWinners">Nº of winners</label>
                         {nowDisable === true 
-                            ? <input disabled min={1} type="number" id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>
-                            : <input min={1} type="number" id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>                     
+                            ? <input disabled min={1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>
+                            : <input min={1} type="number" className={styles.inputNumWinners} id="inputNumWinners" onChange={(e: any) => setNumOfWinners(e.target.value)} value={numOfWinners}/>                     
                         }
                     </div>
-                    <div>
-                        <label id="labelTypeDraw" htmlFor="selectTypeDraw">Type of draw</label>
-                        <select id="selectTypeDraw" defaultValue={"classic"} onChange={(e: any) => typeDrawFN(e)}>
+                    <div className={styles.typeDrawContainer}>
+                        <label className={styles.labelTypeDraw} htmlFor="selectTypeDraw">Type of draw</label>
+                        <select className={styles.selectTypeDraw} id="selectTypeDraw" defaultValue={"classic"} onChange={(e: any) => typeDrawFN(e)}>
                             <option value="classic">Classic</option>
                             <option value="best-of-three">Best of three</option>                        
                         </select>
