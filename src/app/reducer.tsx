@@ -1,7 +1,7 @@
 import { ICompetitor, IUser } from "../components/main"
 
 
-export interface IReducerProps{
+export interface IReducerProps{    
     users: IUser[],
     competitors: ICompetitor[]
 }

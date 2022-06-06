@@ -29,6 +29,33 @@ export const thunkLoginUser = (params: any) => async (dispatch: any, getState: a
     }
 }
 
+export const thunkUpdateUser = (params: any) => async (dispatch: any, getState: any) => {
+    try {        
+        const getToken = localStorage.getItem("getawinnerUserToken");
+        const token = getToken !== null ? getToken : "";
+
+        const config: AxiosRequestConfig<any>= {
+            headers:{
+              "X-Session-Token": token
+            }
+        };  
+
+        const responseGET = await axios.get('http://localhost:3000/users/profile/data', config);
+        const idUser = responseGET.data.idUser;     
+        
+        const responsePUT = await axios.put('http://localhost:3000/users/' + idUser, params, config);
+        console.log(responsePUT);
+        
+        /* dispatch({
+            type: "users/updateUser"
+        }); */
+
+        // falta cambiar las cosas en local (en el reducer???)
+    } catch (error: any) {
+        return error.response.data;
+    }
+}
+
 export const thunkGetCompetitors = async (dispatch: any, getState: any) => {
     
     try {

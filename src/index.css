@@ -71,8 +71,16 @@ hr{
   #inputtextusername, #inputtextpassword, #inputtextrepeatpassword{
     font-size: 0.85em;
   }
-}
 
+  #winnerContent{
+    min-width: 418px;
+  }
+
+  #winnerContent header a{
+    font-size: 1.3em;
+  }
+  
+}
 
 #mainContainer{
   position: relative;

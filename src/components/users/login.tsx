@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import store from "../../app/store";
 import { thunkLoginUser } from "../../app/thunk";
@@ -29,13 +30,13 @@ const Login: FC<ILoginProps> = () => {
             "password": valueLoginPassword
         }
 
-        const loginUser: any = await store.dispatch(thunkLoginUser(loginData));    
-        
+        const loginUser: any = await store.dispatch(thunkLoginUser(loginData)); 
+
         if(loginUser.status === 200){
             setErrorMsg("");
             setShowError(false);
             navigate("/competitors");
-            localStorage.setItem("usernameValue", valueLoginUsername);
+            localStorage.setItem("usernameValue", valueLoginUsername);         
         }
 
         if(

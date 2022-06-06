@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router";
 import CButton from "../formElements/button";
+import EditUser from "./editUser";
 import styles from "./userLogged.module.css";
 
 interface IUserLoggedProps {}
@@ -18,7 +19,9 @@ const UserLogged: FC<IUserLoggedProps> = () => {
     return (
         <React.Fragment>
             <section>
-                {currentUsername}<CButton className={styles.signoffBtn} BVariant={"outline-danger"} text={"Sign Off"} onClick={signOff} />
+                {currentUsername}
+                <EditUser />
+                <CButton className={styles.signoffBtn} BVariant={"outline-danger"} text={"Sign Off"} onClick={signOff} />
             </section>
         </React.Fragment>
     )
